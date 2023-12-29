@@ -5,14 +5,18 @@ export function DevtoolsProvider ({ children }) {
   const [boxesList, setBoxesList] = useState(JSON.parse(window.localStorage.getItem('boxesList')) || [])
   const [lateralLinesList, setLateralLinesList] = useState(JSON.parse(window.localStorage.getItem('lateralLinesList')) || [])
   const [devtoolsLines, setDevtoolsLines] = useState(JSON.parse(window.localStorage.getItem('devtoolsLines')) || [])
-  const [devtoolsSettings, setDevtoolsSettings] = useState(JSON.parse(window.localStorage.getItem('devtoolsSettings')) || {
+  const defaultSettings = {
     blockScrollPage: false,
     startVisible: false,
     showWindowSize: false,
     showWindowScroll: false,
     hideScrollbarPage: false,
     hideButtonToShowDevtools: false,
-    wordToShowDevtools: "dev"
+    wordToShowDevtools: 'dev'
+  }
+  const [devtoolsSettings, setDevtoolsSettings] = useState({
+    ...defaultSettings,
+    ...(JSON.parse(window.localStorage.getItem('devtoolsSettings')) || defaultSettings)
   })
 
   useEffect(() => {
