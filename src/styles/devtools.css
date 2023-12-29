@@ -1,0 +1,254 @@
+#devtools-for-frontends {
+  & .window {
+    position: fixed;
+    left: 30px;
+    top: 30px;
+    z-index: 2147483648 !important;
+    display: none;
+    flex-direction: column;
+    width: 300px;
+    min-width: 200px;
+    height: 300px;
+    min-height: 200px;
+    background-color: var(--window-background-color);
+    border-radius: var(--window-border-radius);
+    box-sizing: border-box;
+    line-height: 1.2;
+    color: var(--window-primary-color);
+    
+    &.visible {
+      display: flex;
+    }
+    
+    & * {
+      font-family: sans-serif !important;
+      font-size: 16px;
+      color: var(--window-primary-color);
+      box-sizing: border-box;
+    }
+  }
+
+  & .window-blocks {
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 2px;
+    width: 100%;
+  }
+
+  & .window-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    grid-gap: var(--window-gap-small);
+    padding: var(--window-gap-small);
+    border: var(--window-border);
+    border-radius: var(--window-border-radius);
+    background-color: var(--window-background-color);
+
+    & * {
+      font-size: 14px;
+    }
+  }
+
+  & .window-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;;
+    width: 100%;
+    height: var(--window-header-height);
+    min-height: var(--window-header-height);
+    background-color: var(--window-background-secondary-color);
+    padding: 0 var(--window-gap);
+    border-radius: var(--window-border-radius);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  & .window-header-title {
+    font-weight: 700;
+  }
+
+  & .window-header-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: var(--window-gap-small);
+  }
+
+  & .window-body {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    padding: var(--window-gap);
+    overflow: hidden auto;
+    overscroll-behavior: contain;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: var(--window-background-color);
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: var(--window-primary-color);
+      border: 2px solid var(--window-background-color);
+      border-radius: var(--window-border-radius-small);
+    }
+  }
+
+  /* =============== Devtools components =============== */
+  & .devtools-line {
+    & .devtools-line-draggable-handle{
+      --background-color-hover: var(--background-color);
+      position: absolute;
+      width: var(--window-button-icon-size);
+    }
+  }
+
+  /* =============== Window Sections =============== */
+  & .window-section-container {
+    display: flex;
+    flex-direction: column;
+    grid-gap: var(--window-gap);
+  }
+
+  & .window-section-items {
+    display: flex;
+    flex-direction: column;
+    grid-gap: var(--window-gap-small);
+    margin-bottom: var(--window-gap);
+    text-align: center;
+  }
+
+  & .window-section-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    grid-gap: var(--window-gap-small);
+    padding: var(--window-gap-small);
+    border-radius: var(--window-border-radius-small);
+    background-color: var(--window-background-color);
+    border: var(--window-border);
+
+    & * {
+      font-size: 14px;
+    }
+  }
+
+  & .window-section-item-block {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    grid-gap: var(--window-gap-small);
+    width: 100%;
+  }
+
+  /* inputs */
+  & .window-section-item-inputs-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    grid-gap: var(--window-gap-small);
+    background-color: var(--window-background-color);
+  }
+
+  & .window-section-item-input-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+
+  & .window-section-item-input-label {
+    position: absolute;
+    top: calc(50% + 1px);
+    left: var(--window-gap-small);
+    transform: translateY(-50%);
+    display: block;
+    font-size: 12px;
+    pointer-events: none;
+  }
+
+  & .window-section-item-input {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: unset !important;
+    background-color: var(--window-background-color) !important;
+    padding: 0 var(--window-gap-small) !important;
+    border: var(--window-border) !important;
+    border-radius: var(--window-border-radius-small) !important;
+    color: var(--white) !important;
+
+    &.no-border {
+      border: 0 !important;
+    }
+  }
+
+  & .window-section-item-input-width,
+  & .window-section-item-input-height {
+    padding: 0 var(--window-gap-small) 0 calc(var(--window-gap) * 2) !important;
+  }
+
+  /* texts */
+  & .window-section-item-name {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: auto;
+    max-width: 100%;
+    height: var(--window-button-icon-size);
+    pointer-events: none;
+  }
+
+  & .window-section-item-color {
+    width: var(--window-button-icon-size);
+    height: var(--window-button-icon-size);
+    background: transparent !important;
+    border: 0 !important;
+    padding: 0 !important;
+    min-height: unset !important;
+    border-radius: var(--window-border-radius-small) !important;
+    cursor: pointer;
+    appearance: none;
+    overflow: hidden;
+
+    &::-webkit-color-swatch-wrapper,
+    &::-webkit-color-swatch {
+      padding: 0;
+      border: 0;
+    }
+  }
+
+  /* buttons simples */
+  & .window-section-button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    
+    & .window-section-button {
+      --window-button-icon-size: 30px;
+      --width: 100%;
+    }
+  }
+}
+

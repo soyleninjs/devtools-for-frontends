@@ -1,0 +1,10 @@
+@import "./styles/variables.css";
+@import "./styles/normalize.css";
+@import "./styles/buttons.css";
+@import "./styles/devtools.css";
+@import "./styles/forms.css";
+@import "./styles/window-menu.css";
+@import "./styles/window-settings.css";
+@import "./styles/window-tools.css";
+@import "./styles/window-format-texts.css";
+@import "./styles/window-resize.css";

@@ -1,0 +1,40 @@
+#devtools-for-frontends {
+  & .window-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: var(--window-gap-small);
+    width: 100%;
+    background-color: var(--dev-background-color);
+    padding: var(--window-gap-small);
+    border-top: var(--window-border);
+    margin: 0 auto;
+  }
+  
+  & .window-menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: var(--window-gap-small);
+    padding: var(--window-gap-small);
+    border-radius: var(--window-border-radius-small);
+    background-color: var(--window-background-color);
+
+    &.active {
+      &, & *{
+        color: var(--window-info-main-color);
+
+      }
+    }
+
+    &:hover {
+      background-color: var(--window-action-hover-color);
+    }
+    
+    & svg {
+      width: 20px;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}

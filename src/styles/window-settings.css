@@ -1,0 +1,30 @@
+#devtools-for-frontends {
+  & .window-settings {
+    display: flex;
+    flex-direction: column;
+    grid-gap: var(--window-gap-small);
+    margin-bottom: var(--window-gap);
+  }
+
+  & .window-settings-block {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    grid-gap: var(--window-gap-small);
+    padding: var(--window-gap-small);
+    border-radius: var(--window-border-radius-small);
+    background-color: var(--window-background-color);
+    border: var(--window-border);
+
+    & * {
+      font-size: 14px;
+    }
+  }
+
+  & .window-settings-panel {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
