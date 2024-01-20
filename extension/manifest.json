@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Devtools for Frontends",
-  "version": "1.0.3",
+  "version": "1.2.0",
   "description": "Extension for frontend developers, make more pretty the frontend",
   "icons": {
     "48": "icon48.png",

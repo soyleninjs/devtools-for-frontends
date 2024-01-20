@@ -6,6 +6,7 @@
   }
 
   & .window-format-texts-input {
+    font-family: sans-serif;
     padding: var(--window-gap-small) !important;
 
     &::-webkit-scrollbar {
@@ -31,6 +32,7 @@
     border-radius: var(--window-border-radius-small);
     background-color: var(--window-background-color);
     border: var(--window-border);
+    color: var(--window-primary-color);
 
     &.button-col-2 {
       grid-column: span 2;

@@ -3,6 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     grid-gap: var(--window-gap-small);
     width: 100%;
     background-color: var(--dev-background-color);
@@ -19,6 +20,7 @@
     padding: var(--window-gap-small);
     border-radius: var(--window-border-radius-small);
     background-color: var(--window-background-color);
+    color: var(--window-primary-color);
 
     &.active {
       &, & *{

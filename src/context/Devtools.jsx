@@ -12,7 +12,8 @@ export function DevtoolsProvider ({ children }) {
     showWindowScroll: false,
     hideScrollbarPage: false,
     hideButtonToShowDevtools: false,
-    wordToShowDevtools: 'dev'
+    wordToShowDevtools: 'dev',
+    genericStyles: "",
   }
   const [devtoolsSettings, setDevtoolsSettings] = useState({
     ...defaultSettings,

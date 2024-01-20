@@ -16,6 +16,7 @@
     border-radius: var(--window-border-radius-small);
     background-color: var(--window-background-color);
     border: var(--window-border);
+    color: var(--window-primary-color);
     
     &:hover {
       background-color: var(--window-action-hover-color);

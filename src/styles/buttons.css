@@ -20,6 +20,7 @@
     cursor: pointer;
     appearance: none;
     user-select: none;
+    color: var(--window-primary-color);
 
     &.active {
       border: 1px solid var(--window-primary-color);

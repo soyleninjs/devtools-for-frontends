@@ -12,6 +12,7 @@ import DevtoolsSettings from './DevtoolsSettings'
 import DevtoolsTools from './DevtoolsTools'
 import DevtoolsFormatTexts from './DevtoolsFormatTexts'
 import DevtoolsWindowResize from './DevtoolsWindowResize'
+import DevtoolsCSSEditor from './DevtoolsCSSEditor'
 import DevtoolsBoxSettings from './DevtoolsBoxSettings'
 import DevtoolsLineSettings from './DevtoolsLineSettings'
 import DevtoolsLateralLinesSettings from './DevtoolsLateralLinesSettings'
@@ -216,6 +217,12 @@ function Devtools () {
             </div>
           )}
 
+          {tabSelected === 'css-editor' && (
+            <div className='window-section window-code-editor'>
+              <DevtoolsCSSEditor />
+            </div>
+          )}
+
           {tabSelected === 'window-resize' && (
             <div className='window-section'>
               <DevtoolsWindowResize />
@@ -272,6 +279,12 @@ function Devtools () {
             height: 0 !important;
           }  
         `}
+        </style>
+      )}
+
+      {devtoolsSettings.genericStyles !== '' && (
+        <style>
+          {devtoolsSettings.genericStyles}
         </style>
       )}
     </>

@@ -23,6 +23,10 @@ const DevtoolsMenu = ({ tabSelected, setTabSelected }) => {
         <Icon icon='text' />
       </button>
 
+      <button title='Tab css code editor' type='button' className={`window-menu-button ${tabSelected === 'css-editor' ? 'active' : ''}`} onClick={() => setTabSelected('css-editor')}>
+        <Icon icon='css-editor' />
+      </button>
+
       <button title='Tab formats texts' type='button' className={`window-menu-button ${tabSelected === 'window-resize' ? 'active' : ''}`} onClick={() => setTabSelected('window-resize')}>
         <Icon icon='resizable' />
       </button>

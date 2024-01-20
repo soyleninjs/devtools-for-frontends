@@ -71,7 +71,7 @@ const DevtoolsSettings = () => {
   return (
     <div className='window-settings'>
       <div className='window-settings-block'>
-        <p className='window-section-item-name'>Word for Show/Hide: &nbsp; <strong>{wordToShowDevtools}</strong></p>
+        <p className='window-section-item-name'>Word for show/hide: &nbsp; <strong>{wordToShowDevtools}</strong></p>
         <button title='Change word to show/hide devtools' type='button' className='window-button window-button-icon' onClick={() => setIsChangingWord(true)}>
           <Icon icon='name' />
         </button>
