@@ -7,7 +7,7 @@ import useDraggable from '../hooks/useDraggable'
 import useResizable from '../hooks/useResizable'
 import useTypeWord from '../hooks/useTypeWord'
 
-import DevtoolsMenu from './DevtoolsMenu'
+import DevtoolsBarMenu from './DevtoolsBarMenu'
 import DevtoolsSettings from './DevtoolsSettings'
 import DevtoolsTools from './DevtoolsTools'
 import DevtoolsFormatTexts from './DevtoolsFormatTexts'
@@ -236,8 +236,6 @@ function Devtools () {
           )}
         </div>
 
-        <DevtoolsMenu tabSelected={tabSelected} setTabSelected={setTabSelected} />
-
         {/* Settings */}
 
         <div className='window-blocks'>
@@ -257,20 +255,6 @@ function Devtools () {
         </div>
       </div>
 
-      <div className='window-float-ui-buttons-wrapper'>
-        {showDevtools && (
-          <button title='Reset window position' type='button' className='window-float-ui-button' onClick={resetWindowPosition}>
-            <Icon icon='location' />
-          </button>
-        )}
-
-        {!devtoolsSettings.hideButtonToShowDevtools && (
-          <button title='Show window devtools' type='button' className='window-float-ui-button' onClick={handleShowWindowDevtools}>
-            {showDevtools ? <Icon icon='close' /> : <Icon icon='window' />}
-          </button>
-        )}
-      </div>
-
       {(devtoolsSettings.hideScrollbarPage || devtoolsSettings.blockScrollPage) && (
         <style>{`
           html::-webkit-scrollbar,
@@ -287,6 +271,10 @@ function Devtools () {
           {devtoolsSettings.genericStyles}
         </style>
       )}
+
+
+
+      <DevtoolsBarMenu />
     </>
   )
 }

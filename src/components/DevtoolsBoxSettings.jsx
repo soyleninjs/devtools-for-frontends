@@ -100,10 +100,10 @@ function DevtoolsBoxSetings ({
     <div className='window-section-item'>
       <div className='window-section-item-block'>
         <h3 className='window-section-item-name'>{name}</h3>
-        <button title='Name' type='button' className='window-button window-button-icon' onClick={() => setIsChangingName(true)}>
+        <button title='Name' type='button' className='dff-button dff-button-icon' onClick={() => setIsChangingName(true)}>
           <Icon icon='name' />
         </button>
-        <button title='Text Box' type='button' className='window-button window-button-icon' onClick={() => setIsChangingText(true)}>
+        <button title='Text Box' type='button' className='dff-button dff-button-icon' onClick={() => setIsChangingText(true)}>
           <Icon icon='text' />
         </button>
         {isChangingName && (
@@ -165,7 +165,7 @@ function DevtoolsBoxSetings ({
                 onChange={updateHeight}
               />
             </div>
-            <button title='Confirm Size' type='button' className='window-button window-button-icon' onClick={() => setIsChangingSize(false)}>
+            <button title='Confirm Size' type='button' className='dff-button dff-button-icon' onClick={() => setIsChangingSize(false)}>
               <Icon icon='check' />
             </button>
           </div>
@@ -173,32 +173,32 @@ function DevtoolsBoxSetings ({
       </div>
       <div className='window-section-item-block'>
         <input title='Color' name='box-color' className='window-section-item-color' type='color' value={color} onChange={updateColor} />
-        <button title='Resize' type='button' className={`window-button window-button-icon ${resizable && 'active'}`} onClick={updateResizable}>
+        <button title='Resize' type='button' className={`dff-button dff-button-icon ${resizable && 'active'}`} onClick={updateResizable}>
           <Icon icon='resizable' />
         </button>
-        <button title='Drag and drop' type='button' className={`window-button window-button-icon ${draggable && 'active'}`} onClick={updateDraggable}>
+        <button title='Drag and drop' type='button' className={`dff-button dff-button-icon ${draggable && 'active'}`} onClick={updateDraggable}>
           <Icon icon='draggable' />
         </button>
-        <button title='Guides' type='button' className={`window-button window-button-icon ${guides.enable && 'active'}`} onClick={updateGuides}>
+        <button title='Guides' type='button' className={`dff-button dff-button-icon ${guides.enable && 'active'}`} onClick={updateGuides}>
           <Icon icon='guides' />
         </button>
-        <button title='Size' type='button' className='window-button window-button-icon' onClick={() => setIsChangingSize(true)}>
+        <button title='Size' type='button' className='dff-button dff-button-icon' onClick={() => setIsChangingSize(true)}>
           <Icon icon='size' />
         </button>
-        <button title='Reset position' type='button' className='window-button window-button-icon' onClick={resetPosition}>
+        <button title='Reset position' type='button' className='dff-button dff-button-icon' onClick={resetPosition}>
           <Icon icon='location' />
         </button>
-        <button title='Hide' type='button' className={`window-button window-button-icon ${visible === false && 'active'}`} onClick={updateVisibility}>
+        <button title='Hide' type='button' className={`dff-button dff-button-icon ${visible === false && 'active'}`} onClick={updateVisibility}>
           <Icon icon='visibility' />
         </button>
-        <button title='Delete' type='button' className='window-button window-button-icon color-error' onClick={handleDelete}>
+        <button title='Delete' type='button' className='dff-button dff-button-icon color-error' onClick={handleDelete}>
           <Icon icon='delete' />
         </button>
       </div>
       {guides.enable && (
         <div className='window-section-item-block window-section-item-block-config-guides'>
           <h3 className='window-section-item-name'>Guides:</h3>
-          <button title='Guide style' type='button' className={`window-button window-button-icon ${guides.dashed && 'active'}`} onClick={handleGuideDashed}>
+          <button title='Guide style' type='button' className={`dff-button dff-button-icon ${guides.dashed && 'active'}`} onClick={handleGuideDashed}>
             <Icon icon='dashed' />
           </button>
         </div>
