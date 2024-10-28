@@ -1,69 +1,70 @@
-#devtools-for-frontends {
+:root,
+:host {
   /* colors */
   --white: rgb(255, 255, 255);
   --black: rgb(0, 0, 0);
 
   /* typography */
-  --window-primary-color: rgba(255, 255, 255, 1);
-  --window-secondary-color: rgba(255, 255, 255, 0.7);
-  --window-disabled-color: rgba(255, 255, 255, 0.5);
+  --dff-primary-color: rgba(255, 255, 255, 1);
+  --dff-secondary-color: rgba(255, 255, 255, 0.7);
+  --dff-disabled-color: rgba(255, 255, 255, 0.5);
 
   /* buttons */
-  --window-action-active-color: rgba(255, 255, 255, 1);
-  --window-action-hover-color: rgba(255, 255, 255, 0.08);
-  --window-action-selected-color: rgba(255, 255, 255, 0.16);
-  --window-action-disabled-color: rgba(255, 255, 255, 0.3);
-  --window-action-disabledBackground-color: rgba(255, 255, 255, 0.12);
+  --dff-action-active-color: rgba(255, 255, 255, 1);
+  --dff-action-hover-color: rgba(255, 255, 255, 0.08);
+  --dff-action-selected-color: rgba(255, 255, 255, 0.16);
+  --dff-action-disabled-color: rgba(255, 255, 255, 0.3);
+  --dff-action-disabledBackground-color: rgba(255, 255, 255, 0.12);
 
   /* background */
-  --window-background-color: #121212;
-  --window-background-secondary-color: #282828;
+  --dff-background-color: #121212;
+  --dff-background-secondary-color: #282828;
 
   /* divider */
-  --window-divider-color: rgba(255, 255, 255, 0.12);
+  --dff-divider-color: rgba(255, 255, 255, 0.12);
 
   /* Colors */
-  --window-primary-light-color: #e3f2fd;
-  --window-primary-main-color: #90caf9;
-  --window-primary-dark-color: #42a5f5;
+  --dff-primary-light-color: #e3f2fd;
+  --dff-primary-main-color: #90caf9;
+  --dff-primary-dark-color: #42a5f5;
 
-  --window-seocondary-light-color: #f3e5f5;
-  --window-seocondary-main-color: #ce93d8;
-  --window-seocondary-dark-color: #ab47bc;
+  --dff-seocondary-light-color: #f3e5f5;
+  --dff-seocondary-main-color: #ce93d8;
+  --dff-seocondary-dark-color: #ab47bc;
 
-  --window-success-light-color: #81c784;
-  --window-success-main-color: #66bb6a;
-  --window-success-dark-color: #388e3c;
+  --dff-success-light-color: #81c784;
+  --dff-success-main-color: #66bb6a;
+  --dff-success-dark-color: #388e3c;
 
-  --window-error-light-color: #e57373;
-  --window-error-main-color: #f44336;
-  --window-error-dark-color: #d32f2f;
+  --dff-error-light-color: #e57373;
+  --dff-error-main-color: #f44336;
+  --dff-error-dark-color: #d32f2f;
 
-  --window-warning-light-color: #ffb74d;
-  --window-warning-main-color: #ffa726;
-  --window-warning-dark-color: #f57c00;
+  --dff-warning-light-color: #ffb74d;
+  --dff-warning-main-color: #ffa726;
+  --dff-warning-dark-color: #f57c00;
 
-  --window-info-light-color: #4fc3f7;
-  --window-info-main-color: #29b6f6;
-  --window-info-dark-color: #0288d1;
+  --dff-info-light-color: #4fc3f7;
+  --dff-info-main-color: #29b6f6;
+  --dff-info-dark-color: #0288d1;
 
   /* borders */
-  --window-border: 1px solid var(--window-divider-color);
-  --window-border-medium: 2px solid var(--window-divider-color);
-  --window-border-bold: 3px solid var(--window-divider-color);
+  --dff-border: 1px solid var(--dff-divider-color);
+  --dff-border-medium: 2px solid var(--dff-divider-color);
+  --dff-border-bold: 3px solid var(--dff-divider-color);
 
   /* Heights */
-  --window-header-height: 30px;
-  --window-navigation-height: 50px;
+  --dff-header-height: 30px;
+  --dff-navigation-height: 50px;
 
   /* border radius */
-  --window-border-radius: 8px;
-  --window-border-radius-small: 4px;
-  
+  --dff-border-radius: 8px;
+  --dff-border-radius-small: 4px;
+
   /* gaps */
-  --window-gap: 10px;
-  --window-gap-small: 5px;
+  --dff-gap: 10px;
+  --dff-gap-small: 5px;
 
   /* buttons */
-  --window-button-icon-size: 20px;
+  --dff-button-icon-size: 20px;
 }
