@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import useTooltip from '../hooks/useTooltip'
 import useDraggable from '../hooks/useDraggable'
-import useDevToolsLateralLines from '../hooks/useDevToolsLateralLines'
+import useDevtoolsLateralLines from '../hooks/useDevtoolsLateralLines'
 import Icon from './Icon'
 
 function DevToolsLateralLines ({
@@ -15,7 +15,7 @@ function DevToolsLateralLines ({
   draggable
 }) {
   const { Tooltip, setTextTooltip } = useTooltip(tooltip)
-  const { updateLateralLines } = useDevToolsLateralLines()
+  const { updateLateralLine } = useDevtoolsLateralLines()
   const { elementDragRef: lineOneRef, handleDragRef: handleLineOneRef, position: positionLineOne } = useDraggable(draggable, true, 'horizontal', false)
 
   useEffect(() => {
@@ -23,7 +23,7 @@ function DevToolsLateralLines ({
   }, [name, offset])
 
   useEffect(() => {
-    updateLateralLines(id, {
+    updateLateralLine(id, {
       offset: positionLineOne.x + 1
     })
   }, [positionLineOne])
@@ -53,7 +53,7 @@ function DevToolsLateralLines ({
         <Tooltip />
         {draggable && (
           <div
-            className='devtools-line-draggable-handle window-button window-button-icon'
+            className='devtools-line-draggable-handle dff-button dff-button-icon'
             ref={handleLineOneRef}
             style={{
               top: '50%',

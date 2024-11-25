@@ -1,0 +1,32 @@
+/* stylelint-disable selector-max-specificity */
+/* stylelint-disable selector-max-id */
+/* stylelint-disable declaration-no-important */
+#devtools-for-frontends {
+  .dff-images-header {
+    display: flex;
+    gap: var(--dff-gap-small);
+    padding-bottom: var(--dff-gap);
+
+    & input {
+      height: auto !important;
+    }
+  }
+
+  .dff-images-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: var(--dff-gap-small);
+    width: 100%;
+  }
+
+  .dff-image-wrapper {
+    display: flex;
+    max-width: 50%;
+    border-radius: var(--dff-border-radius);
+    margin-inline: auto;
+  }
+
+  .dff-image {
+    border-radius: var(--dff-border-radius);
+  }
+}

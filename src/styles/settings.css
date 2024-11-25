@@ -1,0 +1,19 @@
+/* stylelint-disable selector-max-specificity */
+/* stylelint-disable selector-max-id */
+#devtools-for-frontends {
+  & .dff-settings {
+    & * {
+      font-size: 14px;
+    }
+
+    & .dff-content-item {
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--dff-gap-small);
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+}

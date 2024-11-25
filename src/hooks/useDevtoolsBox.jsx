@@ -1,18 +1,21 @@
 import { useContext } from 'react'
 import { DevtoolsContext } from '../context/Devtools'
 
-function useDevtoolsBox () {
-  const { boxesList, setBoxesList } = useContext(DevtoolsContext)
+function useDevtoolsBox() {
+  const nameId = "boxes"
+  const { dffData, setDffData } = useContext(DevtoolsContext)
+  const boxesList = dffData[nameId].data
+  const boxesOrder = dffData[nameId].order
 
   const createBox = () => {
-    setBoxesList(prevState => [...prevState, {
+    const newBox = {
       id: window.crypto.randomUUID(),
-      name: `Box ${boxesList.length + 1}`,
+      name: `Box ${Object.keys(dffData[nameId].data).length + 1}`,
       x: 100,
       y: 100,
       width: 150,
       height: 150,
-      color: '#000000',
+      color: '#0000ff',
       resizable: true,
       draggable: true,
       guides: {
@@ -21,29 +24,65 @@ function useDevtoolsBox () {
       },
       visible: true,
       text: ''
-    }]
-    )
+    };
+
+    setDffData(prevState => ({
+      ...prevState,
+      [nameId]: {
+        ...prevState[nameId],
+        data: {
+          ...prevState[nameId].data,
+          [newBox.id]: newBox
+        },
+        order: [...prevState[nameId].order, newBox.id],
+      }
+    }))
   }
 
   const updateBox = (id, options) => {
-    setBoxesList(prevState => {
-      return prevState.map(box => {
-        if (box.id === id) {
-          Object.keys(options).forEach(propertie => {
-            box[propertie] = options[propertie]
-          })
-          return box
-        }
-        return box
-      })
-    })
+    setDffData(prevState => ({
+      ...prevState,
+      [nameId]: {
+        ...prevState[nameId],
+        data: {
+          ...prevState[nameId].data,
+          [id]: {
+            ...prevState[nameId].data[id],
+            ...options
+          }
+        },
+      }
+    }))
   }
 
   const deleteBox = (id) => {
-    setBoxesList(prevState => prevState.filter(box => box.id !== id))
+    setDffData((prevState) => {
+      const { [id]: _, ...newData } = prevState[nameId].data;
+      const newOrder = prevState[nameId].order.filter((boxId) => boxId !== id);
+      return {
+        ...prevState,
+        [nameId]: {
+          ...prevState[nameId],
+          data: newData,
+          order: newOrder,
+        },
+      };
+    });
   }
 
-  return { boxesList, createBox, updateBox, deleteBox }
+  const updateOrder = (newArrayOrder) => {
+    setDffData((prevState) => {
+      return {
+        ...prevState,
+        [nameId]: {
+          ...prevState[nameId],
+          order: newArrayOrder,
+        },
+      };
+    });
+  }
+
+  return { boxesList, boxesOrder, updateOrder, createBox, updateBox, deleteBox }
 }
 
 export default useDevtoolsBox

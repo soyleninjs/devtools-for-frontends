@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { copyTextToClipboard } from '../utils/utils'
 
-const DevtoolsFormatTexts = () => {
+const ContentFormatTexts = () => {
   const [isCopied, setIsCopied] = useState(false)
   const inputElement = useRef(null)
   let valueInput = ''
@@ -129,32 +129,32 @@ const DevtoolsFormatTexts = () => {
   }
 
   return (
-    <div className='window-format-texts'>
+    <div className='dff-format-texts'>
       <textarea
         ref={inputElement}
         onChange={handleChangeInput}
-        className='window-section-item-input window-format-texts-input'
+        className='dff-input'
         name='format-texts-input'
         id='format-texts-input'
         rows='5'
         autoFocus
       />
-      <div className='window-format-buttons-wrapper'>
-        <button onClick={handleCopyClick} className='window-format-button button-green button-col-2' id='sentence'>{isCopied ? 'Copied!' : 'Copy'}</button>
-        <button onClick={sentenceCase} className='window-format-button' id='sentence'>Format</button>
-        <button onClick={allLowerCase} className='window-format-button' id='lower'>lowercase</button>
-        <button onClick={allUpperCase} className='window-format-button' id='upper'>Uppercase</button>
-        <button onClick={capitalizeEachWord} className='window-format-button' id='capitalized'>Uppercase Format</button>
-        <button onClick={toAlternatingCase} className='window-format-button' id='alternating'>AlTeRnAtE FoRmAt</button>
-        <button onClick={toHandleText} className='window-format-button' id='inverse'>kebab-case</button>
-        <button onClick={toCamelCase} className='window-format-button' id='inverse'>camelCase</button>
-        <button onClick={toPascalCase} className='window-format-button' id='inverse'>PascalCase</button>
-        <button onClick={toSnakeCase} className='window-format-button' id='inverse'>snake_case</button>
-        <button onClick={toTrainCase} className='window-format-button' id='inverse'>Train-Case</button>
-        <button onClick={clearText} className='window-format-button button-red button-col-2' id='clear'>Clear</button>
+      <div className='dff-format-buttons-wrapper'>
+        <button type='button' onClick={handleCopyClick} className='dff-button dff-button-confirm' id='sentence'>{isCopied ? 'Copied!' : 'Copy'}</button>
+        <button type='button' onClick={clearText} className='dff-button dff-button-cancel' id='clear'>Clear</button>
+        <button type='button' onClick={sentenceCase} className='dff-button dff-button-text' id='sentence'>Format</button>
+        <button type='button' onClick={allLowerCase} className='dff-button dff-button-text' id='lower'>lowercase</button>
+        <button type='button' onClick={allUpperCase} className='dff-button dff-button-text' id='upper'>Uppercase</button>
+        <button type='button' onClick={capitalizeEachWord} className='dff-button dff-button-text' id='capitalized'>Uppercase Format</button>
+        <button type='button' onClick={toAlternatingCase} className='dff-button dff-button-text' id='alternating'>AlTeRnAtE FoRmAt</button>
+        <button type='button' onClick={toHandleText} className='dff-button dff-button-text' id='inverse'>kebab-case</button>
+        <button type='button' onClick={toCamelCase} className='dff-button dff-button-text' id='inverse'>camelCase</button>
+        <button type='button' onClick={toPascalCase} className='dff-button dff-button-text' id='inverse'>PascalCase</button>
+        <button type='button' onClick={toSnakeCase} className='dff-button dff-button-text' id='inverse'>snake_case</button>
+        <button type='button' onClick={toTrainCase} className='dff-button dff-button-text' id='inverse'>Train-Case</button>
       </div>
     </div>
   )
 }
 
-export default DevtoolsFormatTexts
+export default ContentFormatTexts

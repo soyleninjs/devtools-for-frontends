@@ -6,8 +6,8 @@ const DevtoolsMenu = ({ tabs, activeTab, onTabClick }) => {
           return (
             <button 
               key={tab.id} 
+              type='button'
               title={tab.title} 
-              type='button' 
               className={`dff-menu-button ${activeTab === tab.id ? 'active' : ''}`}
               onClick={() => onTabClick(tab.id)}
             >

@@ -1,16 +1,11 @@
 {
   "manifest_version": 3,
   "name": "Devtools for Frontends",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "Extension for frontend developers, make more pretty the frontend",
   "icons": {
     "48": "icon48.png",
     "128": "icon128.png"
-  },
-  "permissions": ["storage"],
-  "background": {
-    "service_worker": "background.js",
-    "type": "module"
   },
   "content_scripts": [
     {

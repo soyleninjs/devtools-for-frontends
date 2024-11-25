@@ -1,6 +1,33 @@
+/* stylelint-disable selector-max-specificity */
+/* stylelint-disable selector-max-id */
+/* stylelint-disable selector-max-compound-selectors */
+/* stylelint-disable order/properties-order */
+/* stylelint-disable declaration-no-important */
+#devtools-for-frontends {
+  /* -------- Selects -------- */
+  .dff-input {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: unset !important;
+    background-color: var(--dff-background-color) !important;
+    padding: 0 var(--dff-gap-small) !important;
+    border: var(--dff-border) !important;
+    border-radius: var(--dff-border-radius-small) !important;
+    font-family: sans-serif;
+    color: var(--white) !important;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+
+    &.no-border {
+      border: 0 !important;
+    }
+  }
 
   /* -------- Checkbox -------- */
-.form-checkbox-wrapper {
+  .dff-checkbox-wrapper {
     --checkbox-size: 16px;
     display: flex;
     align-items: center;
@@ -8,7 +35,7 @@
     width: 100%;
   }
 
-.form-checkbox {
+  .dff-checkbox {
     position: relative;
     display: inline-flex;
     margin-left: 6px;
@@ -18,42 +45,41 @@
     }
   }
 
-.form-checkbox-input {
+  .dff-checkbox-input {
     position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
     width: 100%;
     height: 100%;
-    left: 0;
-    top: 0;
     margin: 0;
-    opacity: 0;
     appearance: none;
     cursor: pointer;
 
-    &:checked + .form-group-check .stroke {
+    &:checked + .dff-group-check .stroke {
       stroke-dashoffset: 0;
     }
 
-    &:checked + .form-group-check .check {
+    &:checked + .dff-group-check .check {
       stroke-dashoffset: 0;
     }
   }
 
-.form-checkbox-label {
+  .dff-checkbox-label {
     cursor: pointer;
-    font-size: 18px;
   }
 
-.form-group-check {
+  .dff-group-check {
     width: var(--checkbox-size);
     height: var(--checkbox-size);
 
     & .background {
-      fill: var(--window-primary-color);
+      fill: var(--dff-primary-color);
     }
 
     & .stroke {
       fill: none;
-      stroke: var(--window-background-color);
+      stroke: var(--dff-background-color);
       stroke-miterlimit: 10;
       stroke-width: 2px;
       stroke-dashoffset: 100;
@@ -63,7 +89,7 @@
 
     & .check {
       fill: none;
-      stroke: var(--window-background-color);
+      stroke: var(--dff-background-color);
       stroke-linecap: round;
       stroke-linejoin: round;
       stroke-width: 2px;
@@ -72,17 +98,18 @@
       transition: stroke-dashoffset 0.6s;
     }
   }
-  
-  /* -------- Selects -------- */  
-.form-select {
+
+  /* -------- Selects -------- */
+  .dff-select {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    grid-gap: var(--window-gap-small);
-    padding: var(--window-gap-small);
-    border-radius: var(--window-border-radius-small);
-    background-color: var(--window-background-color);
-    border: var(--window-border);
+    grid-gap: var(--dff-gap-small);
+    padding: var(--dff-gap-small);
+    border-radius: var(--dff-border-radius-small);
+    background-color: var(--dff-background-color);
+    border: var(--dff-border);
   }
+}

@@ -1,0 +1,30 @@
+/* stylelint-disable selector-max-specificity */
+/* stylelint-disable selector-max-id */
+#devtools-for-frontends {
+  .dff-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--dff-gap-small);
+    width: 100%;
+    font-size: 14px;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  .dff-stat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--dff-gap-small);
+    width: 100%;
+    max-width: 180px;
+    background-color: var(--dff-background-color);
+    padding: var(--dff-gap-small);
+    border-radius: var(--dff-border-radius);
+    box-shadow: var(--dff-box-shadow);
+  }
+}

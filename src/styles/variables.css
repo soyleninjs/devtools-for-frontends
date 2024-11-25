@@ -1,5 +1,6 @@
-:root,
-:host {
+/* stylelint-disable selector-max-specificity */
+/* stylelint-disable selector-max-id */
+#devtools-for-frontends {
   /* colors */
   --white: rgb(255, 255, 255);
   --black: rgb(0, 0, 0);
@@ -11,7 +12,7 @@
 
   /* buttons */
   --dff-action-active-color: rgba(255, 255, 255, 1);
-  --dff-action-hover-color: rgba(255, 255, 255, 0.08);
+  --dff-action-hover-color: rgb(60, 60, 60);
   --dff-action-selected-color: rgba(255, 255, 255, 0.16);
   --dff-action-disabled-color: rgba(255, 255, 255, 0.3);
   --dff-action-disabledBackground-color: rgba(255, 255, 255, 0.12);
@@ -49,13 +50,16 @@
   --dff-info-dark-color: #0288d1;
 
   /* borders */
-  --dff-border: 1px solid var(--dff-divider-color);
-  --dff-border-medium: 2px solid var(--dff-divider-color);
-  --dff-border-bold: 3px solid var(--dff-divider-color);
+  --dff-border: 1px solid var(--dff-action-hover-color);
+  --dff-border-medium: 2px solid var(--dff-action-hover-color);
+  --dff-border-bold: 3px solid var(--dff-action-hover-color);
 
   /* Heights */
   --dff-header-height: 30px;
   --dff-navigation-height: 50px;
+
+  /* Box Shadow */
+  --dff-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   /* border radius */
   --dff-border-radius: 8px;

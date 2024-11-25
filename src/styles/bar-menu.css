@@ -1,59 +1,86 @@
-.dff-bar-menu {
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.dff-menu {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: calc(var(--dff-gap) * 1.6);
-  background-color: var(--dff-background-color);
-  padding: 10px calc(var(--dff-gap) * 1.4);
-  border-radius: var(--dff-border-radius);
-}
-
-.dff-menu-button {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--white);
-  cursor: pointer;
-
-  &:hover,
-  &.active {
-    color: var(--dff-primary-dark-color);
+/* stylelint-disable selector-max-specificity */
+/* stylelint-disable selector-max-id */
+#devtools-for-frontends {
+  &:not(:has(.dff-bar-menu.visible)) {
+    & .dff-rendered-elements {
+      display: none;
+    }
   }
 
-  & svg {
-    width: 22px;
-    height: auto;
+  .dff-bar-menu {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 9999999;
+    bottom: var(--dff-gap-small);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--dff-gap-small);
+    width: calc(100vw - var(--dff-gap));
+    max-width: 500px;
+    margin-inline: auto;
+
+    &.visible {
+      display: flex;
+    }
   }
-}
 
-.dff-menu-button-tooltip {
-  position: absolute;
-  bottom: calc(100% + 5px);
-  left: 50%;
-  transform: translateX(-50%);
-  visibility: hidden;
-  opacity: 0;
-  background-color: var(--dff-background-secondary-color);
-  padding: 5px 10px;
-  border-radius: var(--dff-border-radius-small);
-  font-size: 12px;
-  color: #ffffff;
-  white-space: nowrap;
-  transition:
-    opacity 0.3s,
-    visibility 0.3s;
-}
+  .dff-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: calc(var(--dff-gap) * 1.6);
+    width: max-content;
+    max-width: 100%;
+    background-color: var(--dff-background-color);
+    padding: 10px calc(var(--dff-gap) * 1.4);
+    border-radius: var(--dff-border-radius);
+    box-shadow: var(--dff-box-shadow);
+  }
 
-.dff-menu-button:hover .dff-menu-button-tooltip {
-  visibility: visible;
-  opacity: 1;
+  .dff-menu-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    cursor: pointer;
+
+    &:hover {
+      & .dff-menu-button-tooltip {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    &:hover,
+    &.active {
+      color: var(--dff-primary-dark-color);
+    }
+
+    & svg {
+      width: 18px;
+      height: auto;
+    }
+  }
+
+  .dff-menu-button-tooltip {
+    position: absolute;
+    bottom: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    visibility: hidden;
+    opacity: 0;
+    background-color: var(--dff-background-secondary-color);
+    padding: 5px 10px;
+    border-radius: var(--dff-border-radius-small);
+    font-size: 12px;
+    color: #ffffff;
+    white-space: nowrap;
+    transition:
+      opacity 0.3s,
+      visibility 0.3s;
+  }
 }

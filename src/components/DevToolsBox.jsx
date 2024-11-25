@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import useDevtoolsBox from '../hooks/useDevtoolsBox'
 import useDraggable from '../hooks/useDraggable'
 import useResizable from '../hooks/useResizable'
-import DevToolsLine from './DevToolsLine'
+import DevtoolsLine from './DevtoolsLine'
 
 function DevToolsBox ({
   id,
@@ -94,10 +94,10 @@ function DevToolsBox ({
       </span>
       {guides.enable && (
         <>
-          <DevToolsLine manipulate={false} color={color} dashed={guides.dashed} offset={x} />
-          <DevToolsLine manipulate={false} color={color} dashed={guides.dashed} offset={x + width - 1} />
-          <DevToolsLine manipulate={false} moveVertical color={color} dashed={guides.dashed} offset={y} />
-          <DevToolsLine manipulate={false} moveVertical color={color} dashed={guides.dashed} offset={y + height - 1} />
+          <DevtoolsLine manipulate={false} color={color} dashed={guides.dashed} offset={x} />
+          <DevtoolsLine manipulate={false} color={color} dashed={guides.dashed} offset={x + width - 1} />
+          <DevtoolsLine manipulate={false} moveVertical color={color} dashed={guides.dashed} offset={y} />
+          <DevtoolsLine manipulate={false} moveVertical color={color} dashed={guides.dashed} offset={y + height - 1} />
         </>
       )}
     </div>

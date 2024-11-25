@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import useDevtoolsBox from '../hooks/useDevtoolsBox'
+import useDevtoolsModal from '../hooks/useDevtoolsModal'
 import Icon from './Icon'
 
 function DevtoolsBoxSetings ({
@@ -12,12 +13,13 @@ function DevtoolsBoxSetings ({
   height,
   resizable,
   draggable,
-  guides
+  guides,
 }) {
   const [isChangingName, setIsChangingName] = useState(false)
   const [isChangingText, setIsChangingText] = useState(false)
   const [isChangingSize, setIsChangingSize] = useState(false)
   const { updateBox, deleteBox } = useDevtoolsBox()
+  const { openModal, closeModal } = useDevtoolsModal()
 
   const updateColor = (event) => {
     updateBox(id, {
@@ -75,7 +77,19 @@ function DevtoolsBoxSetings ({
   }
 
   const handleDelete = () => {
-    deleteBox(id)
+    openModal({
+      headerText: "Delete Box",
+      contentText: `You want to remove the '${name}' box?`,
+      showPrimaryButton: true,
+      showSecondaryButton: true,
+      onPrimaryClick: () => {
+        deleteBox(id)
+        closeModal()
+      },
+      onSecondaryClick: () => {
+        closeModal()
+      },
+    })
   }
 
   const updateGuides = () => {
@@ -97,112 +111,126 @@ function DevtoolsBoxSetings ({
   }
 
   return (
-    <div className='window-section-item'>
-      <div className='window-section-item-block'>
-        <h3 className='window-section-item-name'>{name}</h3>
-        <button title='Name' type='button' className='dff-button dff-button-icon' onClick={() => setIsChangingName(true)}>
-          <Icon icon='name' />
+    <div className='dff-content-item' style={{"--color": color}} id={id}>
+      <div className="dff-content-item-sidebar">
+        <button type='button' title='Reorder' className='dff-button dff-button-icon border-radius-0 border-0' data-handle-reorder>
+          <Icon icon='reorder' />
         </button>
-        <button title='Text Box' type='button' className='dff-button dff-button-icon' onClick={() => setIsChangingText(true)}>
-          <Icon icon='text' />
+        <button type='button' title='Hide' className={`dff-button dff-button-icon border-radius-0 border-0 ${visible === false && 'active'}`} onClick={updateVisibility}>
+          <Icon icon='visibility' />
         </button>
-        {isChangingName && (
-          <div className='window-section-item-inputs-wrapper'>
-            <div className='window-section-item-input-wrapper'>
-              <input
-                name='box-name'
-                className='window-section-item-input window-section-item-input-name'
-                type='text'
-                value={name}
-                autoFocus
-                onChange={updateName}
-                onBlur={(event) => event.target.value.length > 0 ? setIsChangingName(false) : event.target.focus()}
-                onKeyDown={(event) => event.key === 'Enter' && event.target.value.length > 0 && setIsChangingName(false)}
-              />
+        <button type='button' title='Delete' className='dff-button dff-button-icon color-error border-radius-0 border-0' onClick={handleDelete}>
+          <Icon icon='delete' />
+        </button>
+      </div>
+
+      <div className="dff-content-item-content">
+        <div className='dff-content-item-block'>
+          <h3 className='dff-content-item-name'>{name}</h3>
+          <button type='button' title='Name' className='dff-button dff-button-icon' onClick={() => setIsChangingName(true)}>
+            <Icon icon='name' />
+          </button>
+          <button type='button' title='Text Box' className='dff-button dff-button-icon' onClick={() => setIsChangingText(true)}>
+            <Icon icon='text' />
+          </button>
+          {isChangingName && (
+            <div className='dff-content-item-inputs-wrapper'>
+              <div className='dff-content-item-input-wrapper'>
+                <input
+                  name='box-name'
+                  className='dff-content-item-input dff-content-item-input-name'
+                  type='text'
+                  value={name}
+                  autoFocus
+                  onChange={updateName}
+                  onBlur={(event) => event.target.value.length > 0 ? setIsChangingName(false) : event.target.focus()}
+                  onKeyDown={(event) => event.key === 'Enter' && event.target.value.length > 0 && setIsChangingName(false)}
+                />
+              </div>
             </div>
-          </div>
-        )}
-        {isChangingText && (
-          <div className='window-section-item-inputs-wrapper'>
-            <div className='window-section-item-input-wrapper'>
-              <input
-                name='box-text'
-                className='window-section-item-input window-section-item-input-text'
-                type='text'
-                value={text}
-                autoFocus
-                onChange={updateText}
-                onBlur={() => setIsChangingText(false)}
-                onKeyDown={(event) => { event.key === 'Enter' && setIsChangingText(false) }}
-              />
+          )}
+          {isChangingText && (
+            <div className='dff-content-item-inputs-wrapper'>
+              <div className='dff-content-item-input-wrapper'>
+                <input
+                  name='box-text'
+                  className='dff-content-item-input dff-content-item-input-text'
+                  type='text'
+                  value={text}
+                  autoFocus
+                  onChange={updateText}
+                  onBlur={() => setIsChangingText(false)}
+                  onKeyDown={(event) => { event.key === 'Enter' && setIsChangingText(false) }}
+                />
+              </div>
             </div>
-          </div>
-        )}
-        {isChangingSize && (
-          <div className='window-section-item-inputs-wrapper'>
-            <div className='window-section-item-input-wrapper'>
-              <label className='window-section-item-input-label' htmlFor='box-width'>W: </label>
-              <input
-                name='box-width'
-                id='box-width'
-                className='window-section-item-input window-section-item-input-width'
-                type='number'
-                pattern='[0-9]*'
-                value={width}
-                onChange={updateWidth}
-              />
+          )}
+          {isChangingSize && (
+            <div className='dff-content-item-inputs-wrapper'>
+              <div className='dff-content-item-input-wrapper'>
+                <label className='dff-content-item-input-label' htmlFor='box-width'>W: </label>
+                <input
+                  name='box-width'
+                  id='box-width'
+                  className='dff-content-item-input dff-content-item-input-width'
+                  type='number'
+                  pattern='[0-9]*'
+                  value={width}
+                  onChange={updateWidth}
+                />
+              </div>
+              <span className='dff-content-item-input-separator'>-</span>
+              <div className='dff-content-item-input-wrapper'>
+                <label className='dff-content-item-input-label' htmlFor='box-width'>H: </label>
+                <input
+                  name='box-height'
+                  id='box-height'
+                  className='dff-content-item-input dff-content-item-input-height'
+                  type='number'
+                  pattern='[0-9]*'
+                  value={height}
+                  onChange={updateHeight}
+                />
+              </div>
+              <button type='button' title='Confirm Size' className='dff-button dff-button-icon' onClick={() => setIsChangingSize(false)}>
+                <Icon icon='check' />
+              </button>
             </div>
-            <span className='window-section-item-input-separator'>-</span>
-            <div className='window-section-item-input-wrapper'>
-              <label className='window-section-item-input-label' htmlFor='box-width'>H: </label>
-              <input
-                name='box-height'
-                id='box-height'
-                className='window-section-item-input window-section-item-input-height'
-                type='number'
-                pattern='[0-9]*'
-                value={height}
-                onChange={updateHeight}
-              />
-            </div>
-            <button title='Confirm Size' type='button' className='dff-button dff-button-icon' onClick={() => setIsChangingSize(false)}>
-              <Icon icon='check' />
+          )}
+        </div>
+        <div className='dff-content-item-block'>
+          <input title='Color' name='box-color' className='dff-content-item-color' type='color' value={color} onChange={updateColor} />
+          <button type='button' title='Resize' className={`dff-button dff-button-icon ${resizable && 'active'}`} onClick={updateResizable}>
+            <Icon icon='resizable' />
+          </button>
+          <button type='button' title='Drag and drop' className={`dff-button dff-button-icon ${draggable && 'active'}`} onClick={updateDraggable}>
+            <Icon icon='draggable' />
+          </button>
+          <button type='button' title='Guides' className={`dff-button dff-button-icon ${guides.enable && 'active'}`} onClick={updateGuides}>
+            <Icon icon='guides' />
+          </button>
+          <button type='button' title='Size' className='dff-button dff-button-icon' onClick={() => setIsChangingSize(true)}>
+            <Icon icon='size' />
+          </button>
+          <button type='button' title='Reset position' className='dff-button dff-button-icon' onClick={resetPosition}>
+            <Icon icon='location' />
+          </button>
+          {/* <button type='button' title='Hide' className={`dff-button dff-button-icon ${visible === false && 'active'}`} onClick={updateVisibility}>
+            <Icon icon='visibility' />
+          </button>
+          <button type='button' title='Delete' className='dff-button dff-button-icon color-error' onClick={handleDelete}>
+            <Icon icon='delete' />
+          </button> */}
+        </div>
+        {guides.enable && (
+          <div className='dff-content-item-block dff-content-item-block-config-guides'>
+            <h3 className='dff-content-item-name'>Guides:</h3>
+            <button type='button' title='Guide style' className={`dff-button dff-button-icon ${guides.dashed && 'active'}`} onClick={handleGuideDashed}>
+              <Icon icon='dashed' />
             </button>
           </div>
         )}
       </div>
-      <div className='window-section-item-block'>
-        <input title='Color' name='box-color' className='window-section-item-color' type='color' value={color} onChange={updateColor} />
-        <button title='Resize' type='button' className={`dff-button dff-button-icon ${resizable && 'active'}`} onClick={updateResizable}>
-          <Icon icon='resizable' />
-        </button>
-        <button title='Drag and drop' type='button' className={`dff-button dff-button-icon ${draggable && 'active'}`} onClick={updateDraggable}>
-          <Icon icon='draggable' />
-        </button>
-        <button title='Guides' type='button' className={`dff-button dff-button-icon ${guides.enable && 'active'}`} onClick={updateGuides}>
-          <Icon icon='guides' />
-        </button>
-        <button title='Size' type='button' className='dff-button dff-button-icon' onClick={() => setIsChangingSize(true)}>
-          <Icon icon='size' />
-        </button>
-        <button title='Reset position' type='button' className='dff-button dff-button-icon' onClick={resetPosition}>
-          <Icon icon='location' />
-        </button>
-        <button title='Hide' type='button' className={`dff-button dff-button-icon ${visible === false && 'active'}`} onClick={updateVisibility}>
-          <Icon icon='visibility' />
-        </button>
-        <button title='Delete' type='button' className='dff-button dff-button-icon color-error' onClick={handleDelete}>
-          <Icon icon='delete' />
-        </button>
-      </div>
-      {guides.enable && (
-        <div className='window-section-item-block window-section-item-block-config-guides'>
-          <h3 className='window-section-item-name'>Guides:</h3>
-          <button title='Guide style' type='button' className={`dff-button dff-button-icon ${guides.dashed && 'active'}`} onClick={handleGuideDashed}>
-            <Icon icon='dashed' />
-          </button>
-        </div>
-      )}
     </div>
   )
 }

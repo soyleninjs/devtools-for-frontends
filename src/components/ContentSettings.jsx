@@ -4,7 +4,7 @@ import Checkbox from './Checkbox'
 import { disableScroll, enableScroll } from '../utils/removeScroll'
 import Icon from './Icon'
 
-const DevtoolsSettings = () => {
+const ContentSettings = () => {
   const [isChangingWord, setIsChangingWord] = useState(false)
   const { devtoolsSettings, updateSettings } = useDevtoolsSettings()
   const {
@@ -68,21 +68,22 @@ const DevtoolsSettings = () => {
     }
   }, [blockScrollPage])
 
+
   return (
-    <div className='window-settings'>
-      <div className='window-settings-block'>
-        <p className='window-section-item-name'>Word for show/hide: &nbsp; <strong>{wordToShowDevtools}</strong></p>
-        <button title='Change word to show/hide devtools' type='button' className='window-button window-button-icon' onClick={() => setIsChangingWord(true)}>
+    <div className="dff-content-items dff-settings">
+      <div className='dff-content-item'>
+        <p className='dff-section-item-name'>Word for show/hide: <strong>{wordToShowDevtools}</strong></p>
+        <button title='Change word to show/hide devtools' type='button' className='dff-button dff-button-icon' onClick={() => setIsChangingWord(true)}>
           <Icon icon='name' />
         </button>
 
         {isChangingWord && (
-          <div className='window-section-item-inputs-wrapper'>
-            <div className='window-section-item-input-wrapper'>
+          <div className='dff-section-item-inputs-wrapper'>
+            <div className='dff-section-item-input-wrapper'>
               <input
                 name='settings-word-to-show-hide-devtools'
                 type='text'
-                className='form-input window-section-item-input no-border'
+                className='form-input dff-section-item-input no-border'
                 defaultValue={wordToShowDevtools}
                 autoFocus
                 onBlur={(event) => event.target.value.length > 0 ? updateWordToShowDevtools(event) : event.target.focus()}
@@ -93,31 +94,31 @@ const DevtoolsSettings = () => {
         )}
       </div>
 
-      <div className='window-settings-block'>
+      <div className='dff-content-item'>
         <Checkbox label='Hide button to show/hide' name='checkbox-button-to-show-devtools' checked={hideButtonToShowDevtools} onChange={updateHideButtonToShowDevtools} />
       </div>
 
-      <div className='window-settings-block'>
+      <div className='dff-content-item'>
         <Checkbox label='Launch on page load' name='checkbox-start-visible' checked={startVisible} onChange={updateStartVisible} />
       </div>
 
-      <div className='window-settings-block'>
-        <Checkbox label='Show window size' name='checkbox-show-window-size' checked={showWindowSize} onChange={updateShowWindowSize} />
+      <div className='dff-content-item'>
+        <Checkbox label='Show window size' name='checkbox-show-dff-size' checked={showWindowSize} onChange={updateShowWindowSize} />
       </div>
 
-      <div className='window-settings-block'>
-        <Checkbox label='Show window scroll' name='checkbox-show-window-scroll' checked={showWindowScroll} onChange={updateShowWindowScroll} />
+      <div className='dff-content-item'>
+        <Checkbox label='Show window scroll' name='checkbox-show-dff-scroll' checked={showWindowScroll} onChange={updateShowWindowScroll} />
       </div>
 
-      <div className='window-settings-block'>
+      <div className='dff-content-item'>
         <Checkbox label='Remove scrollbar page' name='checkbox-remove-scrollbar-page' checked={hideScrollbarPage} onChange={updateHideScrollbarPage} />
       </div>
 
-      <div className='window-settings-block'>
+      <div className='dff-content-item'>
         <Checkbox label='Block Scroll page' name='checkbox-block-scroll-page' checked={blockScrollPage} onChange={updateBlockScrollPage} />
       </div>
     </div>
   )
 }
 
-export default DevtoolsSettings
+export default ContentSettings

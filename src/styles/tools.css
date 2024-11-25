@@ -1,0 +1,9 @@
+/* stylelint-disable selector-max-specificity */
+/* stylelint-disable selector-max-id */
+#devtools-for-frontends {
+  & .dff-tools {
+    & .dff-button-text {
+      --height: 40px;
+    }
+  }
+}
